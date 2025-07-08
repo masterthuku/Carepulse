@@ -3,6 +3,7 @@ import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
+import * as Sentry from "@sentry/nextjs";
 
 const fontSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -13,6 +14,9 @@ const fontSans = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "Carepulse",
   description: "A health care app",
+  other: {
+    ...Sentry.getTraceData(),
+  },
 };
 
 export default function RootLayout({
