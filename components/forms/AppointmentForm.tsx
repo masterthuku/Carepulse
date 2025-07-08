@@ -11,8 +11,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { SelectItem } from "../ui/select";
 import { Doctors } from "@/constants";
 import Image from "next/image";
-import { CreateAppointmentSchema, getAppointmentSchema, UserFormValidation } from "@/lib/validation";
-import { createUser } from "@/lib/actions/patients.actions";
+import { getAppointmentSchema } from "@/lib/validation";
 import z from "zod";
 import { createAppointment } from "@/lib/actions/appointment.actions";
 
@@ -73,7 +72,7 @@ const AppointmentForm = ({
 
         if (appointment) {
             form.reset();
-            router.push(`/patients/${userId}/new-appointment/success?appointmentId=${appointment.id}`)
+            router.push(`/patients/${userId}/new-appointment/success?appointmentId=${appointment.$id}`)
         }
       }
     } catch (error) {
